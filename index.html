@@ -62,7 +62,7 @@
   <div class="price-banner">
     <div class="stat"><div class="label">现价</div><div class="value up">$608.80</div></div>
     <div class="stat"><div class="label">YTD 涨幅</div><div class="value up">+374%</div></div>
-    <div class="stat"><div class="label">共识目标价</div><div class="value warn">$106</div></div>
+    <div class="stat"><div class="label">SRS+Pentwater 经济敞口</div><div class="value danger">~108%</div></div>
     <div class="stat"><div class="label">空头 / Float</div><div class="value danger">>100%</div></div>
   </div>
 </header>
@@ -139,6 +139,59 @@
       <li>BlackRock / Vanguard = 被动指数基金，不交易</li>
       <li>真正可流动的浮筹 <strong style="color:var(--danger)">可能不到 15–20%</strong></li>
     </ul>
+  </div>
+</div>
+
+<h2>二点五、Float Waterfall —— 有效流通盘被压成负数</h2>
+<p style="color:var(--muted);font-size:13px;margin-top:-8px">从 35.26M 总股本开始，逐层扣除被锁定的筹码。被指数基金锁、被 Cooperation Agreement 锁、被 TRS 对冲方锁 —— 得出"真正可交易的 float"，这是整个轧空论证的核心数字。</p>
+
+<div class="panel">
+  <div style="position:relative;height:380px"><canvas id="waterfall"></canvas></div>
+</div>
+
+<div class="panel" style="margin-top:14px;background:rgba(230,57,70,0.06);border-color:var(--danger)">
+  <h3 style="margin-top:0;color:var(--danger)">🧨 计算逻辑与"为什么 float 可能为负"</h3>
+  <ol style="padding-left:18px;font-size:13px">
+    <li><strong>总股本 100%</strong> = 35.26M 股</li>
+    <li><strong>− SRS 直接持股 49.4%</strong>（13D，Cooperation Agreement 锁仓，短期无法抛）</li>
+    <li><strong>− Pentwater 直接持股 22.2%</strong>（含 2.2% call 期权，其中 20% 现金/股票建仓）</li>
+    <li><strong>− 被动指数/养老金 ≈ 9%</strong>（BlackRock、Vanguard 不主动交易）</li>
+    <li><strong>− TRS 对冲锁仓 ≈ 36%</strong> → <em>SRS + Pentwater 合计经济敞口 108%，减去直接持股 71.6% ≈ 36% 是 TRS 形式。Prime Broker（交易对手）为对冲 TRS 敞口，通常在市场上买入等量股票，再次锁进去。</em></li>
+    <li>→ <strong style="color:var(--danger)">有效可交易 float ≈ −17%</strong></li>
+  </ol>
+  <p style="font-size:13px;margin:12px 0 0 0;color:var(--fg)">这看似"不可能"，但对应的其实就是空头行为：空头借券卖出后，买家把这些股票算在自己的持仓里（13F 合计 149.1%）。只要空头需要平仓，市场上根本没有真正可交易的股票供其买回——价格被逼到无穷大。这就是经典的 <strong>Volkswagen 2008</strong> 结构。</p>
+</div>
+
+<h2>二点六、TRS（Total Return Swap）—— 隐藏的经济敞口</h2>
+<div class="grid2">
+  <div class="panel">
+    <h3 style="margin-top:0">什么是 TRS，为什么这里是关键</h3>
+    <ul class="clean" style="font-size:13.5px">
+      <li><strong>TRS = 现金结算总收益互换。</strong>一方（SRS/Pentwater）支付融资成本，另一方（投行，如 Barclays、Morgan Stanley）支付标的股票的全部价格涨跌和分红收益。</li>
+      <li><strong>好处（对 SRS/Pentwater）：</strong>
+        <ul>
+          <li>获得等同于持股的<strong>经济收益</strong>，但<strong>不用在 13D/13F 里按实物股票申报</strong></li>
+          <li>不占用保证金资本（杠杆效应）</li>
+          <li><strong>不需要披露为 group 的"一致行动人"</strong> —— 因为技术上没有投票权</li>
+        </ul>
+      </li>
+      <li><strong>副作用（对市场）：</strong>投行为了对冲自己在 TRS 上的敞口，会去市场上<strong>买入同等数量的实物股票</strong>，这些股票又被"锁"起来，进一步压缩真实 float。</li>
+      <li><strong>对法律定性的影响：</strong>2022 年 Archegos 事件后，SEC 已经警示：用 TRS 规避 13D group 申报属于"实质重于形式"的违规风险领域。<strong>Pentwater 仍以 13G 被动申报，结合 TRS 敞口，是一个敏感点</strong>。</li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h3 style="margin-top:0">已披露的 TRS 结构</h3>
+    <table style="font-size:13px">
+      <tr><th>主体</th><th>直接股票</th><th>含 TRS 经济敞口</th></tr>
+      <tr><td>SRS</td><td>49.4%</td><td>≈ 55–65%（估算）</td></tr>
+      <tr><td>Pentwater</td><td>22.2%</td><td>≈ 43–53%（估算）</td></tr>
+      <tr style="background:rgba(230,57,70,0.1)">
+        <td><strong>合计</strong></td>
+        <td><strong>71.6%</strong></td>
+        <td><strong style="color:var(--danger)">~108%</strong></td>
+      </tr>
+    </table>
+    <p style="font-size:12px;color:var(--muted);margin-top:12px">Pentwater 在最近的申报中明确披露使用"call options, put options, cash-settled total return swap agreements"；SEC 文件语言：<em>"swap agreements give economic results comparable to ownership but do not provide power to vote"</em>。108% 数字为市场共识估算，确切分拆需等 Q1 13F / 13D 更新。</p>
   </div>
 </div>
 
@@ -237,6 +290,50 @@
   </ul>
 </div>
 
+<h2>五点五、Exit Catalysts —— 决定何时崩塌的三个事件</h2>
+<p style="color:var(--muted);font-size:13px;margin-top:-8px">轧空不会永远持续，结构会被下面几个事件破坏。按重要性排序：</p>
+
+<div class="grid2">
+  <div class="panel" style="border-color:var(--danger)">
+    <h3 style="margin-top:0;color:var(--danger)">① ATM 发行（最大风险 / 最大退路）</h3>
+    <ul class="clean" style="font-size:13px">
+      <li><strong>2026-03-27 Avis 提交 S-3ASR shelf registration</strong></li>
+      <li>注册上限：<strong>最多 500 万股</strong>（≈14% of 现有股本）</li>
+      <li>销售代理人：<strong>完整承销团</strong> —— Barclays、BNP Paribas、BofA Securities、JP Morgan、Morgan Stanley、RBC、Scotia、Truist、Wells Fargo</li>
+      <li><strong>机制：</strong>公司直接向市场增发股票，按 ATM 价格（就是现价 $600+）卖给接盘方。每印一股，float 增加一股，空头压力缓解</li>
+      <li><strong>为什么是"退路"：</strong>SRS 的管理层（Pahwa 是执行董事长）如果决定"落袋"，最优解不是 SRS 自己抛（受 Cooperation Agreement 限制），而是<strong>让公司增发</strong>，用高价融到的现金间接兑现 SRS 价值</li>
+      <li><strong>触发信号：</strong>任何 ATM 首次定价（Prospectus Supplement 424B5 文件）</li>
+    </ul>
+  </div>
+  <div class="panel" style="border-color:var(--warn)">
+    <h3 style="margin-top:0;color:var(--warn)">② Q1 2026 财报（预计 5 月中旬）</h3>
+    <ul class="clean" style="font-size:13px">
+      <li>财报前内部人处于<strong>交易黑屏期</strong>（估计从 3/15 起），不能卖</li>
+      <li>财报发布后 ~2 个交易日窗口打开，<strong>Pahwa、Sarma 才可能开始 Form 4 卖出</strong></li>
+      <li>同时 Q1 13F 申报（5 月 15 日前）将揭露 <strong>Pentwater 实际 TRS 敞口变化</strong> —— 如果大幅减仓，意味着做局方已在高位出货</li>
+      <li>财报本身：基本面糟糕（PE 150x+，年度亏损 $889M），任何不及预期都可能触发踩踏</li>
+    </ul>
+  </div>
+  <div class="panel" style="border-color:var(--warn)">
+    <h3 style="margin-top:0;color:var(--warn)">③ 空头弹药耗尽</h3>
+    <ul class="clean" style="font-size:13px">
+      <li>Days to cover 7.3 → 空头不可能在几天内平完</li>
+      <li>Bloomberg 已报道：<strong>新空头在 $500+ 再入场</strong>押注回归 —— 这是"空头换手"，不是"空头退场"</li>
+      <li>一旦新空头撑住且借券成本过高（utilization 接近 100%），<strong>轧空燃料会突然耗尽</strong></li>
+      <li>Michael Burry 公开称此次行情为 "<em>dumb luck</em>"</li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h3 style="margin-top:0">④ SEC 介入（低概率但高影响）</h3>
+    <ul class="clean" style="font-size:13px">
+      <li>Pentwater 以 13G（被动）申报但实际激进加仓 + 使用 TRS 规避 group 披露 —— Archegos 后这是监管敏感点</li>
+      <li>Avis 149% 机构持股 + 100%+ 空头 → 指数式异常，容易成为 SEC 关注对象</li>
+      <li>一旦有<strong>非正式询问</strong>（comment letter），Pentwater 就必须说清楚 TRS 结构和意图</li>
+      <li>若被认定为 group，需补报 13D 并可能追缴利润</li>
+    </ul>
+  </div>
+</div>
+
 <h2>六、需持续跟踪的信号</h2>
 <div class="panel">
   <ul class="clean">
@@ -304,6 +401,67 @@ new Chart(document.getElementById("pie"), {
       tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.parsed}%` } }
     },
     cutout: "55%"
+  }
+});
+
+// ========== Float Waterfall chart ==========
+// Floating bars: each bar represents one "bucket" drawn from running total
+const wfSteps = [
+  { label: "总股本 (Shares Out)",       from: 0,      to: 100,  color: "#4ecdc4", type:"base" },
+  { label: "− SRS 直接持股",             from: 50.6,   to: 100,  color: "#e63946", type:"lock" },
+  { label: "− Pentwater 直接持股",       from: 28.4,   to: 50.6, color: "#f7b801", type:"lock" },
+  { label: "− 被动基金 / 指数",          from: 19.4,   to: 28.4, color: "#8b949e", type:"lock" },
+  { label: "− TRS 对冲锁仓（估算）",      from: -16.6,  to: 19.4, color: "#c084fc", type:"lock" },
+  { label: "= 有效可交易 Float",         from: -16.6,  to: 0,    color: "#ff6b6b", type:"result" }
+];
+const wfCtx = document.getElementById('waterfall').getContext('2d');
+new Chart(wfCtx, {
+  type: 'bar',
+  data: {
+    labels: wfSteps.map(s => s.label),
+    datasets: [{
+      label: '% of Shares Outstanding',
+      data: wfSteps.map(s => [s.from, s.to]),
+      backgroundColor: wfSteps.map(s => s.color),
+      borderColor: wfSteps.map(s => s.type === "result" ? "#ff6b6b" : "#0e1116"),
+      borderWidth: 2,
+      borderSkipped: false,
+      barPercentage: 0.75
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'CAR 流通盘瀑布图 · 从 100% 扣到 −17%',
+        color: '#e6edf3',
+        font: { size: 14, weight: 'bold' }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => {
+            const s = wfSteps[ctx.dataIndex];
+            const size = s.to - s.from;
+            return `占比 ${size.toFixed(1)}%  (从 ${s.from}% 到 ${s.to}%)`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        title: { display: true, text: '% of Shares Outstanding', color: '#e6edf3' },
+        ticks: { color: '#e6edf3', callback: v => v + '%' },
+        grid: { color: 'rgba(139,148,158,0.1)' },
+        min: -25, max: 105
+      },
+      y: {
+        ticks: { color: '#e6edf3', font: { size: 12 } },
+        grid: { display: false }
+      }
+    }
   }
 });
 
