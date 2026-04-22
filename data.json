@@ -1,0 +1,76 @@
+{
+  "ticker": "CAR",
+  "company": "Avis Budget Group, Inc.",
+  "exchange": "NASDAQ",
+  "as_of_date": "2026-04-21",
+  "price_snapshot": {
+    "current_price_usd": 608.80,
+    "single_day_change_pct": 23.3,
+    "ytd_change_pct": 374,
+    "six_week_change_pct": 400,
+    "analyst_consensus_target_usd": 106.43,
+    "deutsche_bank_target_usd": 128
+  },
+  "share_structure": {
+    "shares_outstanding": 35258652,
+    "as_of": "2026-02-13",
+    "institutional_ownership_pct_of_shares_out": 149.1,
+    "note_on_ownership_over_100pct": "13F 合计持股超过流通股，是大量借券做空的直接证据——同一份股票被持有人登记了，但也被借出并卖空给了新的买方"
+  },
+  "short_interest": {
+    "short_interest_pct_of_float": 58,
+    "note_highest_in_10yr": true,
+    "pct_of_float_end_of_march_2026": 54,
+    "days_to_cover": 7.3,
+    "shares_short_approx_million": 9,
+    "exceeds_free_float": true
+  },
+  "top_holders_dec_2025": [
+    { "holder": "SRS Investment Management, LLC", "shares_million": 17.43, "pct_of_company": 49.09, "filing_type": "13D", "notes": "执行董事长 Jagdeep Pahwa 即 SRS 总裁；有正式 Cooperation Agreement；持仓静止多年" },
+    { "holder": "Pentwater Capital Management LP", "shares_million": 7.82, "pct_of_company": 22.20, "filing_type": "13G/A", "notes": "2026-04-07 披露（event date 2026-03-25）；含 775.8k 股 call option；3 周内从 12.3% 翻到 22.2%" },
+    { "holder": "Susquehanna Group", "shares_million": 2.71, "pct_of_company": 7.70, "filing_type": "13G", "notes": "做市/期权/高频混合" },
+    { "holder": "Morgan Stanley", "shares_million": 1.97, "pct_of_company": 5.60, "filing_type": "13G", "notes": "2025-12-31 突破 5% 申报 13G" },
+    { "holder": "Jane Street Group, LLC", "shares_million": 1.91, "pct_of_company": 5.40, "filing_type": "13G/A", "notes": "2026-02-12 13G/A；13F 还会包含客户/对冲头寸，总计约 3.71M" },
+    { "holder": "UBS Group AG", "shares_million": 2.96, "pct_of_company": 8.4, "filing_type": "13F", "notes": "投行，可能包含客户账户和做市库存" },
+    { "holder": "Goldman Sachs Group Inc.", "shares_million": 2.53, "pct_of_company": 7.2, "filing_type": "13F", "notes": "投行，类似 UBS" },
+    { "holder": "Walleye Trading LLC", "shares_million": 2.07, "pct_of_company": 5.9, "filing_type": "13F", "notes": "量化对冲基金" },
+    { "holder": "Morgan Stanley", "shares_million": 1.98, "pct_of_company": 5.6, "filing_type": "13F", "notes": "投行" },
+    { "holder": "BlackRock, Inc.", "shares_million": 1.63, "pct_of_company": 4.6, "filing_type": "13F", "notes": "指数基金为主" },
+    { "holder": "Vanguard Group Inc.", "shares_million": 1.53, "pct_of_company": 4.3, "filing_type": "13F", "notes": "指数基金为主" },
+    { "holder": "Bank of America Corp", "shares_million": 1.49, "pct_of_company": 4.2, "filing_type": "13F", "notes": "投行" }
+  ],
+  "concerted_action_nodes": [
+    {
+      "entity": "SRS Investment Management, LLC",
+      "role": "最大股东（~49%）",
+      "key_people": ["Karthik Sarma（创始人、CEO，Avis 董事）", "Jagdeep Pahwa（总裁、Avis 执行董事长 2025-03-01 起）"],
+      "formal_relationship_with_issuer": "Cooperation Agreement（2016 首签，2020 新版，2025-09-05 最新修订：投票上限 35%→45%；董事会 5-6 人；最多 2 名 SRS 提名董事；含股份转让限制）",
+      "filing_type": "13D（主动投资人）",
+      "holding_since_year": 2013,
+      "evidence_of_concerted_action": "Cooperation Agreement 本身即公开的一致行动协议；SRS 高管同时任 Avis 高管"
+    },
+    {
+      "entity": "Pentwater Capital Management LP",
+      "role": "第二大股东（22.2%，2026-03-25）",
+      "key_people": ["Matthew Halbower（创始人）"],
+      "formal_relationship_with_issuer": "无公开合作协议",
+      "filing_type": "13G/A（被动投资人）",
+      "holding_since_year": 2025,
+      "accumulation_timeline": {
+        "2025-12-31": "3.10M 股 (8.8%)",
+        "2026-02-20": "+425k @ $94.26 ≈ 3.53M 股",
+        "2026-03-06_13G/A": "4.33M 股 (12.3%) 含 254.7k 期权",
+        "2026-03-25_event": "7.82M 股 (22.2%) 含 775.8k 期权",
+        "3周加仓量": "约 3.5M 股 / +10pp"
+      },
+      "evidence_of_concerted_action": "13G/A 明确声明未持有'以改变/影响控制权为目的'，未披露 group 关系。但：(1) 建仓时点集中于 SRS 协议修订（2025-09）之后；(2) 3月加仓最猛的阶段恰逢股价从 $150 涨到 $400+；(3) 在股价高位继续以被动身份申报，法律定性风险大"
+    }
+  ],
+  "catalysts_for_surge": [
+    "TSA 机场混乱导致租车需求被讲成新叙事",
+    "中东紧张、油价上行刺激出行替代品（自驾）想象空间",
+    "空头回补踩踏（days-to-cover 7.3，且空头头寸 > 可借股数）",
+    "SRS + Pentwater 合计锁仓 >60%，浮筹被极度压缩",
+    "被散户与做市商（Jane Street、Walleye）识别为 meme-like squeeze 标的"
+  ]
+}
